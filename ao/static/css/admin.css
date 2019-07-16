@@ -1,0 +1,78 @@
+#header {
+    height: auto;
+    color: #000;
+    background-color: #4CAF51;
+    padding: 5px 30px;
+}
+
+#head img {
+    width: 80px;
+    padding: 2px;
+}
+
+#branding h1 {
+    color: rgb(255, 255, 255);
+}
+
+div .breadcrumbs {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #4CAF51;
+    padding: 15px 30px;
+}
+
+div .breadcrumbs a {
+    padding: 5px 15px;
+    color: #000;
+}
+
+div .breadcrumbs a:hover {
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.module caption, #changelist-filter h2 {
+    background-color: #4CAF51;
+    color: #000;
+}
+
+a.section:link, a.section:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #4CAF51;
+    color: #000;
+}
+
+.selector .selector-chosen h2 {
+    background: #4CAF51;
+    color: #000;
+}
+
+#changelist-filter ul li.selected a {
+    color: #4CAF51;
+    font-weight: 600;
+}
+
+ul #changelist-filter ul a:focus, #changelist-filter ul a:hover, #changelist-filter ul li.selected a:focus, #changelist-filter ul li.selected a:hover {
+    color: #4CAF51;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #4CAF51;
+    color: #000;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #4CAF51;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background-color: #000;
+    color: #4CAF51;
+}
+
+.button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
+    background-color: #000;
+    color: #4CAF51;
+}

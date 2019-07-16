@@ -1,0 +1,19 @@
+<div id="home" class="showcase container">
+    <div class="row">
+        {% if showcases %}
+        {% for showcase in showcases %}
+        <div class="col s12 main-text">
+            <h1>I'm <span>{{showcase.name}}</span></h1>
+            <h5 class="ocupation"> {{showcase.job1}} <span>| {{showcase.job2}}</span></h5>
+            <p class="flow-text">{{showcase.description}}</p>
+            <br>
+            <a href="#contact" class="btn btn-large green white-text">Contact Me</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="no-content">
+        </div>
+        {% endif %}
+
+    </div>
+</div>

@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block nav %}
+{% include 'partials/_navbar2.html' %}
+    <section id="show-pages" class="showcase">
+        <div class="container show-pages_content center">
+            <h4 class="show-text"><span class="top-line">Searched</span> <span class="bt">Blog</span></h4>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+<section id="blog_detail">
+    <div class="container">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12 l8">
+                    <div class="row">
+                        {% if blogs %}
+                        {% for blog in blogs %}
+                        <div class="col s12 l3 blog-list">
+                            <ul class="blog-collection-tags">
+                                <a class="blog-tag" href="{% url 'blog' blog.id %}">
+                                    <p>{{blog.category.tags}}</p>
+                                </a>
+                                
+                            </ul>
+                            <ul class="blog-collection-links">
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="author"> <i class="icons fa fa-user"></i> {{blog.author}}</p>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="date"><i class="icons fa fa-calendar"></i> {{blog.date_publish|date:"N n, Y" }}</p>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="comment"><span><i class="icons fa fa-comment"></i>{{blog.comments.all.count}}</span> Comments</p>
+                                    </div>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="post-detail_img">
+                                <img src="{{blog.image.url}}" alt="Blog main image">
+                            </div>
+                        </div>
+                        <div class="post-detail_content">
+                            <h3 class="post-detail-title">{{blog.title}}</h3>
+                            <p class="post-detail-text">{{blog.description|linebreaksbr|truncatewords:20}}</p>
+                            <a href="{% url 'blog' blog.id %}" class="btn blog-btn green white-text text-darken-3 waves-effect waves-white">Read
+                                More...</a>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="no-content">
+                            <p class="para">There is no blog. search a different word.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="pagination">
+                        {% if blogs.has_other_pages %}
+                        <div class="paginators">
+                            {% if blogs.has_previous %}
+                            <a class="clr" href="?page={{blogs.previous_page_number}}">&laquo;</a>
+                            {% else %}
+                            <a class="disabled clr">&laquo;</a>
+                            {% endif %}
+                            {% for i in blogs.paginator.page_range %}
+                            {% if blogs.number == i %}
+                            <a class="active">{{i}}</a>
+                            {% else %}
+                            <a href="?page={{i}}">{{i}}</a>
+                            {% endif %}
+                            {% endfor%}
+                            {% if blogs.has_next %}
+                            <a class="clr" href="?page={{blogs.next_page_number}}">&raquo;</a>
+                            {% else %}
+                            <a class="disabled clr">&raquo;</a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <br>
+                    
+                </div>
+                <div class="col s12 l4">
+                    <div class="side-info">
+                        <div class="search-post">
+                            <form action="{% url 'search' %}">
+                                <input placeholder="Search blog" value="{{ values.keywords }}" type="text"
+                                    name="keywords" id="search">
+                                <button class="btn green waves-effect waves-black white-text btn-clr"
+                                    type="submit">Search
+                                    <i class="material-icons right">search</i>
+                                </button>
+                            </form>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="author-card">
+                            {% if authors %}
+                            {% for author in authors %}
+                            <div class="author-card-wrapper">
+                                <div class="author-img">
+                                    <img src="{{author.image.url}}" alt="Blog Author Image">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">{{author.name}}</h4>
+                                    <p class="author-job">{{author.job}}</p>
+                                    <ul class="author-social">
+                                        <a href="{{author.link1}}" class="social-icon"><i>{{author.facebook.as_html}}</i></a>
+                                        <a href="{{author.link2}}" class="social-icon"><i>{{author.twitter.as_html}}</i></a>
+                                        <a href="{{author.link3}}" class="social-icon"><i>{{author.instagram.as_html}}</i></a>
+                                        <a href="{{author.link4}}" class="social-icon"><i>{{author.github.as_html}}</i></a>
+                                    </ul>
+                                    <p class="author-desc">
+                                        {{author.info}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="popular-post">
+                            <h3 class="blog-post_header">
+                                Latest Post
+                            </h3>
+                            {% if side_blog %}
+                            {% for blog in side_blog %}
+                            <div class="popular-post-wrapper">
+                                <div class="popular-post_image">
+                                    <img src="{{ blog.image.url }}" alt="popular post">
+                                </div>
+                                <div class="popular-post_content">
+                                    <a href="{% url 'blog' blog.id %}" class="black-text"><h5 class="popular-post_title">{{blog.title|truncatewords:6}}</h5></a>
+                                    <h5 class="popular-post_date">{{ blog.date_publish|timesince }} ago</h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-content">
+                                <p class="para">
+                                    No Content to show
+                                </p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="client">
+    <div class="slider-wrap">
+        <div id="slider">
+            <div class=" container client-testimonial">
+                <h3 class="center">What Clients Are Saying</h3>
+                {% if testimonials %}
+                {% for testimonial in testimonials %}
+                <div class="client-testimonial-content fade">
+                    <blockquote class="flow-text center">
+                        {{testimonial.quote}}
+                    </blockquote>
+                    <h4 class="client-name center"> -- {{testimonial.full_name}}</h4>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="no-content">
+                    <p class="para">No Testimonial have yet posted</p>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class="center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

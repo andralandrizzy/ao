@@ -1,0 +1,43 @@
+{% load static %}
+<header class="main-header">
+    <div class="primary-overlay">
+        <div class="navbar-fixed">
+            <nav class="green main-nav">
+                <div class="nav-wrapper">
+                    <div class="row container">
+                        <div class="col s12">
+                            <ul class="left hide-on-med-and-down">
+                                <li><a class="" href="{% url 'index' %}">Home</a></li>
+                                <li><a class="" href="#service">Services</a></li>
+                                <li><a class="" href="#about">About</a></li>
+                            </ul>
+                            <a href="{% url 'index' %}" class="logo-link center brand-logo">
+                                <div class="logo-img">
+                                    <img src="{% static 'images/ao-logo-white.png' %}" alt="logo">
+                                </div>
+                            </a>
+                            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                                <i class="material-icons">menu</i></a>
+                            <ul class="right hide-on-med-and-down">
+                                <li><a class="" href="#portfolio">Portfolio</a></li>
+                                <li><a class="" href="#blogs">Blogs</a></li>
+                                <li><a class="" href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <ul class="green darken-1 sidenav v-nav" id="mobile-demo">
+        <li><a class="center-align" href="{% url 'index' %}">home</a></li>
+        <li><a class="center-align" href="#service">Services</a></li>
+        <li><a class="center-align" href="#about">About</a></li>
+        <li><a class="center-align" href="#portfolio">Portfolio</a></li>
+        <li><a class="center-align" href="#blogs">Blogs</a></li>
+        <li><a class="center-align" href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Showcase -->
+    {% include 'partials/_showcase.html' %}
+</header>

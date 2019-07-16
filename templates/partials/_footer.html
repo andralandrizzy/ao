@@ -1,0 +1,75 @@
+{% load static %}
+<section class="testimonial-form">
+    <div class="message_form" id="formModal">
+        <div class="form-msg">
+            <span class="modal-close">&times;</span>
+            <h3 class="form-msg-title">Leave a testimonial</h3>
+            <form action="{% url 'quote' %}" method="POST">
+                {% csrf_token %}
+                <textarea name="quote" placeholder="Enter Quote" id="textarea1" class="materialize-textarea" cols="30"
+                    rows="10" required></textarea>
+                <input type="text" name="full_name" placeholder="Enter your name" required>
+                <br>
+                <br>
+                <input type="submit" value="Send" class="green btn">
+            </form>
+        </div>
+    </div>
+</section>
+<footer id="main-footer">
+    <div class="container">
+        {% if footer %}
+        {% for foo in footer %}
+        <div class="row footer-content">
+            <div class="col l3 s12">
+                <a href="#home" target="_blank" class="brand-logo">
+                    <div class="logo-img">
+                        <img src="{% static 'images/ao-logo.png' %}" alt="logo">
+                    </div>
+                </a>
+                <p class="footer-text-para">{{foo.site_about}}</p>
+                <a href="{{ foo.address_link}}" target="_blank" class="green-text">
+                    <p class="footer-text-para"><span class="street_num">{{foo.street_num}}</span> <span class="street_name">{{foo.street_name}}</span>
+                        <br>
+                        <span class="city">{{foo.city}}</span> <span class="state">{{foo.state}}</span> <span class="country">{{foo.country}}</span>
+                    </p>
+                </a>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="link-header">Resources</h5>
+                <ul>
+                    <li class="footer-link"><a href="{{foo.java_link}}" target="_blank">Javascripts</a></li>
+                    <li class="footer-link"><a href="{{foo.html_link}}" target="_blank">CSS / HTML</a></li>
+                    <li class="footer-link"><a href="{{foo.python_link}}" target="_blank">Python</a></li>
+                    <li class="footer-link"><a href="{{foo.php_link}}" target="_blank">php</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="link-header">Quick Links</h5>
+                <ul>
+                    <li class="footer-link"><a href="#!" class="testimonial-btn" id="formTestBtn">Testimonial Form</a></li>
+                    <li class="footer-link disabled"><a href="#!">Policy</a></li>
+                    <li class="footer-link"><a href="#about">About</a></li>
+                    <li class="footer-link"><a href="#service">Services</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12 footer-icons">
+                <h5 class="link-header">Follow Me</h5>
+                <ul class="logo-collection">
+                    <li class="logo-link"><a href="{{foo.twi_link}}" target="_blank"><i>{{foo.twitter.as_html}}</i></a></li>
+                    <li class="logo-link"><a href="{{foo.insta_link}}" target="_blank"><i>{{foo.instagram.as_html}}</i></a></li>
+                    <li class="logo-link"><a href="{{foo.github_link}}" target="_blank"><i>{{foo.github.as_html}}</i></a></li>
+                    <li class="logo-link"><a href="{{foo.linkedin_link}}" target="_blank"><i>{{foo.linkedin.as_html}}</i></a></li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="footer-copyright">
+            <div class="container center">
+                <p class="copy">&copy; 2019 Copyright All rights reserved | created by <span>Andral Orelus</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

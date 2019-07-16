@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+{% include 'partials/_navbar2.html' %}
+<section id="show-pages" class="showcase">
+    <div class="container show-pages_content center">
+        <h4 class="show-text"><span class="top-line">Portfolio</span> <span class="bt">Details</span></h4>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section id="portfolio-detail">
+    <div class="col s12 container">
+        <div class="row">
+            <div class="col l6 s12 portfolio-detail-img">
+                <img src="{{portfolio.image.url}}" alt="Portfolio Image Details">
+            </div>
+            <div class="col l6 s12">
+                <div class="row port-content-wrapper">
+                    <div class="detail-intro col s12">
+                        <h5 class="port-detail-title">{{portfolio.title|title }}</h5>
+                        <p class="port-detail-para">{{portfolio.description}}</p>
+                    </div>
+                    <div class="detail-links col s3">
+                        <p class="client">client</p>
+                        <p class="site">Website</p>
+                        <p class="date-completed">Completed</p>
+                    </div>
+                    <div class="detail-tags col s9">
+                        <p class="client">: {{ portfolio.client }}</p>
+                        <p class="site">: {{ portfolio.website }}</p>
+                        <p class="date-completed">: {{ portfolio.completed_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text col s12">
+            <p>{{ portfolio.text|linebreaks }}</p>
+        </div>
+    </div>
+</section>
+<section id="client">
+    <div class="slider-wrap">
+        <div id="slider">
+            <div class=" container client-testimonial">
+                <h3 class="center">What Clients Are Saying</h3>
+                {% if testimonials %}
+                {% for testimonial in testimonials %}
+                <div class="client-testimonial-content fade">
+                    <blockquote class="flow-text center">
+                        {{testimonial.quote}}
+                    </blockquote>
+                    <h4 class="client-name center"> -- {{testimonial.full_name}}</h4>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="no-content">
+                    <p class="para">No Testimonial have yet posted</p>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class="center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

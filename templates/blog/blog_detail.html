@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load fontawesome %}
+{% load static %}
+{% block nav %}
+{% include 'partials/_navbar2.html' %}
+<section id="show-pages" class="showcase">
+    <div class="container show-pages_content center">
+        <h4 class="show-text"><span class="top-line">Blog</span> <span class="bt">Details</span></h4>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section id="blog_detail">
+    <div class="container">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12 l8">
+                    <div class="row">
+                        <div class="col s12 l3 tags-list">
+                            <ul class="blog-collection-tags">
+                                {% if categories %}
+                                {% for category in categories %}
+                                <a class="tag_cat" href="{% url 'blog' blog.id %}">
+                                    <p>{{category.tags}}</p>
+                                </a>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                            <ul class="blog-collection-links">
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="author"> <i class="icons fa fa-user"></i> {{blog.author.name}}</p>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="date"><i class="icons fa fa-calendar"></i>
+                                            {{blog.date_publish|date:"N n, Y" }}</p>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="blog-links">
+                                        <p class="comment"><span><i
+                                                    class="icons fa fa-comment"></i>{{blog.comments.all.count}}</span>
+                                            Comments</p>
+                                    </div>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="post-detail_img">
+                                <img src="{{blog.image.url}}" alt="Blog main image">
+                            </div>
+                        </div>
+                        <div class="post-detail_content">
+                            <h3 class="post-detail-title">{{blog.title}}</h3>
+                            <p class="post-detail-text">{{blog.description|linebreaksbr}}</p>
+                        </div>
+                    </div>
+
+                    <br>
+                    <hr>
+
+                    <div class="post-filter row">
+                        {% if prev_post %}
+                        {% for blog in prev_post %}
+                        <div class="prev col l6">
+                            <div class="post-filter-img">
+                                <img src="{{blog.image.url}}" alt="prev image">
+                            </div>
+                            <div class="post-filter-content">
+                                <a href="{% url 'blog' blog.id %}">
+                                    <p class="blog-post-sub">Oldest Post</p>
+                                </a>
+                                <a class="recent" href="{% url 'blog' blog.id %}">
+                                    <p class="blog-post-text">{{blog.title|truncatewords:4}}</p>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="post-filter-content">
+                            <a href="#">
+                                <p>No Preview Post To Look</p>
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% if next_post %}
+                        {% for blog in next_post %}
+                        <div class="next col s6">
+                            <div class="post-filter-img">
+                                <img src="{{blog.image.url}}" alt="prev image">
+                            </div>
+                            <div class="post-filter-content">
+                                <a href="{% url 'blog' blog.id %}">
+                                    <p class="blog-post-sub">Newest Post</p>
+                                </a>
+                                <a class="recent" href="{% url 'blog' blog.id %}">
+                                    <p class="blog-post-text">{{blog.title|truncatewords:4}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="post-filter-content">
+                        <a href="#">
+                            <p>No Next Post To Look</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <br>
+                    {% include 'partials/_alerts.html' %}
+                    <br>
+                    <div class="comments">
+                        <h4 class="center"><span>{{blog.comments.all.count}}</span> Comments</h4>
+                        <br>
+                        <br>
+                        {% for comment in blog.comments.all%}
+                        <div class="comment-wrapper">
+                            <div class="user-comment-image">
+                                <img src="{% static 'images/defaultuser.png' %}" alt="">
+                            </div>
+                            <div class="user-comment-content">
+                                <p class="user-comment-name">{{ comment.first_name }} {{comment.last_name}}</p>
+                                <p class="user-comment-date">{{comment.created_date}}</p>
+                                <p class="user-comment-text">{{ comment.comment_text|linebreaks }}</p>
+                            </div>
+                        </div>
+                        {% empty%}
+                        <div class="no-content">
+                            <p class="para"> There is no comment yet posted</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="comment-form">
+                        <h4 class="center">Leave a Comment</h4>
+                        <br>
+                        <br>
+                        <form action="{% url 'blog' blog.id %}" method="POST">
+                            {{ comments.as_p }}
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input name="first_name" id="first_name" type="text" class="validate" required>
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="last_name" name="last_name" type="text" class="validate" required>
+                                    <label for="last_name">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="email" id="email" class="validate" required>
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea name="comment_text" id="comment-field"
+                                                class="materialize-textarea" cols="30" rows="10" required></textarea>
+                                            <label for="message">Type your comment here...</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn green waves-effect waves-black white-text btn-clr" type="submit">Post
+                                Comment
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="side-info">
+                        <div class="search-post">
+                            <form action="{% url 'search' %}">
+                                <input placeholder="Search blog" value="{{ values.keywords }}" type="text"
+                                    name="keywords" id="search">
+                                <button class="btn green waves-effect waves-black white-text btn-clr"
+                                    type="submit">Search
+                                    <i class="material-icons right">search</i>
+                                </button>
+                            </form>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="author-card">
+                            {% if authors %}
+                            {% for author in authors %}
+                            <div class="author-card-wrapper">
+                                <div class="author-img">
+                                    <img src="{{author.image.url}}" alt="Blog Author Image">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">{{author.name}}</h4>
+                                    <p class="author-job">{{author.job}}</p>
+                                    <ul class="author-social">
+                                        <a href="{{author.link1}}"
+                                            class="social-icon"><i>{{author.facebook.as_html}}</i></a>
+                                        <a href="{{author.link2}}"
+                                            class="social-icon"><i>{{author.twitter.as_html}}</i></a>
+                                        <a href="{{author.link3}}"
+                                            class="social-icon"><i>{{author.instagram.as_html}}</i></a>
+                                        <a href="{{author.link4}}"
+                                            class="social-icon"><i>{{author.github.as_html}}</i></a>
+                                    </ul>
+                                    <p class="author-desc">
+                                        {{author.info}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="popular-post">
+                            <h3 class="blog-post_header">
+                                Latest Post
+                            </h3>
+                            {% if side_blog %}
+                            {% for blog in side_blog %}
+                            <div class="popular-post-wrapper">
+                                <div class="popular-post_image">
+                                    <img src="{{ blog.image.url }}" alt="popular post">
+                                </div>
+                                <div class="popular-post_content">
+                                    <a href="{% url 'blog' blog.id %}" class="black-text">
+                                        <h5 class="popular-post_title">{{blog.title|truncatewords:6}}</h5>
+                                    </a>
+                                    <h5 class="popular-post_date">{{ blog.date_publish|timesince }} ago</h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-content">
+                                <p class="para">
+                                    No Content to show
+                                </p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="client">
+    <div class="slider-wrap">
+        <div id="slider">
+            <div class=" container client-testimonial">
+                <h3 class="center">What Clients Are Saying</h3>
+                {% if testimonials %}
+                {% for testimonial in testimonials %}
+                <div class="client-testimonial-content fade">
+                    <blockquote class="flow-text center">
+                        {{testimonial.quote}}
+                    </blockquote>
+                    <h4 class="client-name center"> -- {{testimonial.full_name}}</h4>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="no-content">
+                    <p class="para">No Testimonial have yet posted</p>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class="center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
