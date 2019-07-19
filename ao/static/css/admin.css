@@ -60,7 +60,7 @@ ul #changelist-filter ul a:focus, #changelist-filter ul a:hover, #changelist-fil
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
     background: #4CAF51;
-    color: #000;
+    color: rgb(244, 244, 244);
     font-size: 1.0785rem;
     padding: 0.7em 1.7em;
 }
