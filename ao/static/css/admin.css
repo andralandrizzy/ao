@@ -61,6 +61,8 @@ ul #changelist-filter ul a:focus, #changelist-filter ul a:hover, #changelist-fil
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
     background: #4CAF51;
     color: #000;
+    font-size: 1.0785rem;
+    padding: 0.7em 1.7em;
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
@@ -68,8 +70,9 @@ ul #changelist-filter ul a:focus, #changelist-filter ul a:hover, #changelist-fil
 }
 
 .button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
-    background-color: #000;
+    background-color: rgb(216, 255, 197);
     color: #4CAF51;
+    border: solid 1px rgba(76, 175, 81, 0.406);
 }
 
 .button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
