@@ -45,6 +45,7 @@ $(document).ready(function() {
 
 // CLIENT SLIDER
 var slideIndex = 0;
+showSlides(slideIndex);
 
 function showSlides() {
 	var i;
