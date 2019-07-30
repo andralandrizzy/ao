@@ -1,21 +1,4 @@
 {% load static %}
-<section class="testimonial-form">
-    <div class="message_form" id="formModal">
-        <div class="form-msg">
-            <span class="modal-close">&times;</span>
-            <h3 class="form-msg-title">Leave a testimonial</h3>
-            <form action="{% url 'quote' %}" method="POST">
-                {% csrf_token %}
-                <textarea name="quote" placeholder="Enter Quote" id="textarea1" class="materialize-textarea" cols="30"
-                    rows="10" required></textarea>
-                <input type="text" name="full_name" placeholder="Enter your name" required>
-                <br>
-                <br>
-                <input type="submit" value="Send" class="green btn">
-            </form>
-        </div>
-    </div>
-</section>
 <footer id="main-footer">
     <div class="container">
         {% if footer %}
@@ -73,3 +56,20 @@
         </div>
     </div>
 </footer>
+<section class="testimonial-form">
+    <div class="message_form" id="formModal">
+        <div class="form-msg">
+            <span class="modal-close">&times;</span>
+            <h3 class="form-msg-title">Leave a testimonial</h3>
+            <form action="{% url 'quote' %}" method="POST">
+                {% csrf_token %}
+                <textarea name="quote" placeholder="Enter Quote" id="textarea1" class="materialize-textarea" cols="30"
+                    rows="10" required></textarea>
+                <input type="text" name="full_name" placeholder="Enter your name" required>
+                <br>
+                <br>
+                <input type="submit" value="Send" class="green btn">
+            </form>
+        </div>
+    </div>
+</section>

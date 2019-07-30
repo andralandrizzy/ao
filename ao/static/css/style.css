@@ -144,7 +144,7 @@ img {
 }
 
 .main-header {
-	background: url(../images/art.jpg);
+	background: url(../images/workstation.jpg);
 	background-size: cover;
 	background-position: center;
 	height: 100vh;
@@ -384,7 +384,7 @@ img {
 	/* Initial value */
 }
 
-/* testimonial form style for dashboard*/
+/* testimonial form style*/
 
 .testimonial-form .message_form {
 	display: none;
@@ -415,7 +415,7 @@ img {
 	padding: 25px 0;
 }
 
-.testimonial-form .modal-close {
+.modal-close {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
