@@ -134,7 +134,7 @@ img {
 }
 
 .primary-overlay {
-	background: rgba(69, 75, 68, 0.57);
+	background: rgba(0, 0, 0, 0.767);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -144,7 +144,7 @@ img {
 }
 
 .main-header {
-	background: url(../images/workstation.jpg);
+	background: url(../images/workstation2.jpg);
 	background-size: cover;
 	background-position: center;
 	height: 100vh;
@@ -386,7 +386,7 @@ img {
 
 /* testimonial form style*/
 
-.testimonial-form .message_form {
+.message_form {
 	display: none;
 	position: fixed;
 	z-index: 1;
@@ -399,7 +399,7 @@ img {
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
-.testimonial-form .form-msg {
+.form-msg {
 	width: 960px;
 	margin: 3em auto;
 	padding: 2em 2em 3.5em 2em;
@@ -407,11 +407,11 @@ img {
 	border-radius: 7px;
 }
 
-.testimonial-form .form-user-image {
+.form-user-image {
 	padding: 25px 0;
 }
 
-.testimonial-form .form-user-image {
+.form-user-image {
 	padding: 25px 0;
 }
 
@@ -422,7 +422,7 @@ img {
 	font-weight: bold;
 }
 
-.testimonial-form .modal-close:hover, .modal-close:focus {
+.modal-close:hover, .modal-close:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
@@ -1170,7 +1170,7 @@ hr {
 		flex-direction: column;
 	}
 	.post-detail-title {
-		font-size: 1.820rem;
+		font-size: 1.850rem;
 	}
 	#about {
 		text-align: center;
@@ -1179,7 +1179,7 @@ hr {
 		margin-top: 3em;
 		margin-left: 0;
 	}
-	.testimonial-form .form-msg {
+	.form-msg {
 		width: 97%;
 	}
 	.skills-title {
