@@ -374,6 +374,7 @@ img {
 #about .about-image {
 	display: flex;
 	justify-content: center;
+	width: 100%;
 }
 
 .text-anime {
@@ -382,17 +383,17 @@ img {
 }
 
 #about .about-image .img-post {
-	display: block;
-	object-fit: cover;
 	margin-right: 10px;
-	border-radius: 10px;
 	overflow: hidden;
 }
 
 .lrAnime {
 	animation: leftToRight 2s ease-in-out 0s 1;
-	width: 100%;
+	width: 80%;
+	display: block;
 	height: auto;
+	border-radius: 10px;
+	object-fit: cover;
 }
 
 #about .about-info {
@@ -1328,10 +1329,8 @@ hr {
 	.gallery__item {
 		margin-bottom: 20px;
 	}
-	#about .about-image {
-		margin: 0 auto;
-		width: 100%;
-		height: auto;
+	.lrAnime {
+		width: 80%;
 	}
 	#main-footer .logo-img {
 		width: 50px;
