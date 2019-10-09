@@ -22,7 +22,8 @@ mainObserver.observe(mainBody);
 
 ///About Animation Scrolling
 const aboutText = document.querySelector('.about-text');
-const aboutImage = document.querySelector('.img-post');
+const aboutImage = document.querySelector('.about-image');
+const img = document.querySelector('.img-post');
 const about = document.querySelector('#about');
 
 const aboutOptions = {
@@ -33,10 +34,12 @@ const aboutObserver = new IntersectionObserver(function(entries, aboutObserver) 
 	entries.forEach((entry) => {
 		if (entry.isIntersecting) {
 			aboutText.classList.add('text-anime');
-			aboutImage.classList.add('image-file');
+			aboutImage.classList.add('lrAnime');
+			img.classList.add('lrAnime');
 		} else {
 			aboutText.classList.remove('text-anime');
-			aboutImage.classList.remove('image-file');
+			aboutImage.classList.remove('lrAnime');
+			img.classList.remove('lrAnime');
 		}
 	});
 }, aboutOptions);

@@ -178,6 +178,7 @@ img {
 	position: relative;
 	height: 35vh;
 	width: 100vw;
+	overflow: hidden;
 	min-width: 100%;
 	min-height: 500px;
 	padding: 3em 1em;
@@ -224,13 +225,13 @@ img {
 
 #home .ocupation {
 	color: rgba(236, 222, 222, 0.678);
-	font-size: 1.6rem;
-	letter-spacing: 1.2px;
+	font-size: 1.284rem;
+	letter-spacing: 1px;
 	animation: rightToLeft 2s ease-in-out 0s 1;
 }
 
 #home .text {
-	font-size: 1.3rem;
+	font-size: 1.145rem;
 	letter-spacing: 1px;
 	animation: leftToRight 2s ease-in-out 0s 1;
 }
@@ -388,34 +389,11 @@ img {
 	object-fit: cover;
 	margin-right: 10px;
 	border-radius: 10px;
-}
-
-.image-file {
-	animation: zoomInOut 2s ease-in-out 0s 1;
 	overflow: hidden;
 }
 
-@keyframes zoomInOut {
-	0% {
-		opacity: 0;
-		transform: scale(0.3, 0.3);
-	}
-	25% {
-		opacity: 0.2;
-		transform: scale(0.5, 0.5);
-	}
-	50% {
-		opacity: 0.3;
-		transform: scale(0.7, 0.7);
-	}
-	75% {
-		opacity: 0.5;
-		transform: scale(0.9, 0.9);
-	}
-	100% {
-		opacity: 1;
-		transform: scale(1, 1);
-	}
+.lrAnime {
+	animation: leftToRight 2s ease-in-out 0s 1;
 }
 
 #about .about-info {
@@ -696,17 +674,19 @@ img {
 	font-weight: 600;
 	letter-spacing: 2px;
 	line-height: 1.4;
-	font-size: 1.545rem;
+	font-size: 1.295rem;
 }
 
 #portfolio-detail .port-detail-para {
 	margin: 1em auto;
 	letter-spacing: 1px;
+	font-size: 1.098rem;
 }
 
 #portfolio-detail .text p {
 	line-height: 1.8;
 	letter-spacing: 1px;
+	font-size: 1.058rem;
 }
 
 #portfolio-detail .detail-links p {
@@ -723,10 +703,8 @@ img {
 .slider-wrap {
 	position: relative;
 	width: 100%;
-	height: 100%;
 	overflow: hidden;
-	padding: 7% 0;
-	/* background-color: rgba(244, 244, 244, 0.427); */
+	padding: 8% 0;
 	background-color: #FAFAFF;
 	color: rgb(31, 31, 31);
 }
@@ -894,7 +872,7 @@ img {
 }
 
 #contact .input-field label {
-	color: rgba(203, 199, 199, 0.906);
+	color: rgba(238, 238, 238, 0.906);
 	font-size: 1rem;
 }
 
@@ -908,7 +886,7 @@ img {
 }
 
 #contact .form-clr {
-	background-color: rgba(33, 164, 33, 0.851);
+	background-color: rgba(76, 175, 81, 0.865);
 	border-radius: 10px;
 }
 
