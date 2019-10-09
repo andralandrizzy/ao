@@ -388,10 +388,9 @@ img {
 }
 
 .lrAnime {
-	animation: leftToRight 2s ease-in-out 0s 1;
+	/* animation: leftToRight 2s ease-in-out 0s 1; */
 	width: 80%;
 	display: block;
-	height: auto;
 	border-radius: 10px;
 	object-fit: cover;
 }

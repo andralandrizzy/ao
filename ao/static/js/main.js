@@ -34,12 +34,12 @@ const aboutObserver = new IntersectionObserver(function(entries, aboutObserver) 
 	entries.forEach((entry) => {
 		if (entry.isIntersecting) {
 			aboutText.classList.add('text-anime');
-			aboutImage.classList.add('lrAnime');
-			img.classList.add('lrAnime');
+			// aboutImage.classList.add('lrAnime');
+			// img.classList.add('lrAnime');
 		} else {
 			aboutText.classList.remove('text-anime');
-			aboutImage.classList.remove('lrAnime');
-			img.classList.remove('lrAnime');
+			// aboutImage.classList.remove('lrAnime');
+			// img.classList.remove('lrAnime');
 		}
 	});
 }, aboutOptions);
