@@ -398,28 +398,23 @@ img {
 @keyframes zoomInOut {
 	0% {
 		opacity: 0;
-		transform: scaleX(0%);
-		width: 0%;
+		transform: scale(0.3, 0.3);
 	}
 	25% {
 		opacity: 0.2;
-		transform: scaleX(25%);
-		width: 25%;
+		transform: scale(0.5, 0.5);
 	}
 	50% {
 		opacity: 0.3;
-		transform: scaleX(50%);
-		width: 45%;
+		transform: scale(0.7, 0.7);
 	}
 	75% {
 		opacity: 0.5;
-		transform: scaleX(75%);
-		width: 60%;
+		transform: scale(0.9, 0.9);
 	}
 	100% {
 		opacity: 1;
-		transform: scaleX(100%);
-		width: 85%;
+		transform: scale(1, 1);
 	}
 }
 
