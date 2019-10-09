@@ -47,8 +47,8 @@ admin.site.register(Skill, SkillAdmin)
 
 
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'date_pub', 'client', 'website')
-    list_display_links = ('id', 'title', 'date_pub', 'client', 'website')
+    list_display = ('id', 'title', 'date_pub', 'client', 'website','site_link')
+    list_display_links = ('id', 'title', 'date_pub', 'client', 'website','site_link')
     list_filter = ('title', 'date_pub', 'client', 'website')
     search_fields = ('title', 'date_pub', 'client', 'website')
     list_per_page = 25

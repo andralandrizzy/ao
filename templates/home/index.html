@@ -11,14 +11,16 @@
     <div class="container">
         {% include 'partials/_alerts.html' %}
         <div class="service-card-item">
-            <h2 class="center-align">Services</h2>
+            <h2 class="center title">Services</h2>
             <div class="content-service">
                 {% if services %}
                 {% for service in services %}
                 <div class="wrapper">
-                    <a class="icons" href="#"><i>{{service.icons.as_html}}</i></a>
+                    <div class="icon-wrap">
+                        <a class="icons" href="#"><i>{{service.icons.as_html}}</i></a>
+                    </div>
                     <div class="service-info">
-                        <h3>{{service.profession}}</h3>
+                        <h3><span class="bar">{{service.profession}}</span></h3>
                         <p>
                             {{service.text}}
                         </p>
@@ -36,16 +38,16 @@
 </section>
 <section id="about">
     <div class="container">
-        <div class="col s12">
-            <div class="row">
+        <div class="col s12 content-wrapper">
+            <div class="content-about">
                 {% if about_me %}
                 {% for about in about_me %}
-                <div class="col s12 l5 about-image">
-                    <img src="{{about.image.url}}" alt="About Me">
+                <div class="about-image">
+                    <img class="img-post image-file" src="{{about.image.url}}" alt="About Me">
                 </div>
-                <div class="col s12 l7 about-info">
-                    <h4><span class="top-line">Abo</span>ut <span class="bt">Me</span></h4>
-                    <p>{{about.text}}</p>
+                <div class="about-info">
+                    <h4 class="about-title"><span class="top-line">Abo</span>ut <span class="bt">Me</span></h4>
+                    <p class="about-text text-anime">{{about.text}}</p>
                 </div>
                 {% endfor %}
                 {% else %}
@@ -54,19 +56,20 @@
                 </div>
                 {% endif %}
             </div>
-        </div>    
+        </div>
     </div>
 </section>
+ <!-- My skills -->
 <section id="skills">
-    <div class="skills container">
-        <div class="row">
+    <div class="container">
+        <div class="row skills">
             <div class="col l3 s12 skills-title">
                 <h4 class="right"><span class="top-line">My </span> <span class="bt">Skills</span></h4>
             </div>
             <div class="col l9 s12">
                 {% if skills %}
                 {% for skill in skills %}
-                <div class="progress-bar" data-percentage="{{ skill.percentage }}">
+                <div id="progress" class="progress-bar" data-percentage="{{ skill.percentage }}">
                     <h4 class="progress-title-holder">
                         <span class="progress-title">{{ skill.carreer }}</span>
                         <span class="progress-number-wrapper">
@@ -96,13 +99,10 @@
         <div class="port-gallery">
             {% if portfolios %}
             {% for portfolio in portfolios %}
-            <div class="gallery__item gallery__item--1">
-                <img src="{{portfolio.image.url}}" class="gallery__img" alt="Image 1">
-                <div class="overlay">
+            <div class="gallery__item">
                     <a id="portBtn" href="{% url 'portfolio' portfolio.id %}">
-                        <div class="text">See More...</div>
+                        <img src="{{portfolio.image.url}}" class="gallery__img" alt="Image 1">
                     </a>
-                </div>
             </div>
             {% endfor %}
             {% else %}
@@ -192,50 +192,43 @@
         {% endif %}
     </div>
 </section> -->
-<section id="contact">
-    <div class="contact-form container">
-        <div class="row">
-            <form class="col s12" action="{% url 'index' %}" method="POST">
-                {% csrf_token %}
-                <h3 class="center white-text title">Contacts</h3>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input name="first_name" id="first_name" type="text" class="validate" required>
-                        <label for="first_name">First Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="last_name" name="last_name" type="text" class="validate" required>
-                        <label for="last_name">Last Name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="text" name="email" id="email" class="validate" required>
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="subject" name="subject" type="text" class="validate" required>
-                        <label for="subject">Message Subject</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea name="message" id="message-field" class="materialize-textarea" cols="30" rows="10"
-                                    required></textarea>
-                                <label for="message">Type your message here...</label>
-                            </div>
+<section id="contact" class="section section-contact center scrollspy">
+    <div id="googlemap"></div>
+    <div class="containter">
+        <div class="row my-form">
+            <div class="col s12 m6 offset-m6 ">
+                <div class="card-panel z-depth-5 form-clr">
+                    <h4 class="white-text">Contact Me</h4>
+                    <form action="{% url 'index' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <input name="first_name" id="first_name" type="text" class="validate" required>
+                            <label for="first_name">First Name</label>
                         </div>
-                    </div>
+                        <div class="input-field">
+                            <input id="last_name" name="last_name" type="text" class="validate" required>
+                            <label for="last_name">Last Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="email" id="email" class="validate" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="subject" name="subject" type="text" class="validate" required>
+                            <label for="subject">Message Subject</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea name="message" id="message-field" class="materialize-textarea" cols="30" rows="10"
+                                required></textarea>
+                            <label for="message">Type your message here...</label>
+                        </div>
+                        <button class="btn waves-effect waves-green white-text btn-clr" type="submit" name="action">Send
+                            Message
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
                 </div>
-                <button class="btn btn-large waves-effect waves-green white-text btn-clr" type="submit"
-                    name="action">Send Message
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            </div>
         </div>
     </div>
 </section>

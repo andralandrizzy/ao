@@ -46,6 +46,7 @@ class Portfolio(models.Model):
     text = models.TextField(blank=True)
     client = models.CharField(max_length=100, blank=True)
     website = models.URLField(blank=True)
+    site_link = models.URLField(blank=True)
     completed_date = models.DateTimeField(blank=True)
     date_pub = models.DateTimeField(default=datetime.now, blank=True)
 

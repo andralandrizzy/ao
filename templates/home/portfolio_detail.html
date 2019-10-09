@@ -28,9 +28,9 @@
                         <p class="date-completed">Completed</p>
                     </div>
                     <div class="detail-tags col s9">
-                        <p class="client">: {{ portfolio.client }}</p>
-                        <p class="site">: {{ portfolio.website }}</p>
-                        <p class="date-completed">: {{ portfolio.completed_date }}</p>
+                        <p class="client"> <span>:</span> {{ portfolio.client }}</p>
+                        <p class="site"> <span>:</span> <a href="{{ portfolio.site_link}}">{{ portfolio.website }}</a></p>
+                        <p class="date-completed"> <span>:</span> {{ portfolio.completed_date }}</p>
                     </div>
                 </div>
             </div>

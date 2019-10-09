@@ -3,11 +3,11 @@
         {% if showcases %}
         {% for showcase in showcases %}
         <div class="col s12 main-text">
-            <h1><span>{{showcase.name}}</span></h1>
+            <h1><span class="title">{{showcase.name}}</span></h1>
             <h5 class="ocupation"> {{showcase.job1}} <span>| {{showcase.job2}}</span></h5>
-            <p class="flow-text">{{showcase.description}}</p>
+            <p class="text">{{showcase.description}}</p>
             <br>
-            <a href="#contact" class="btn btn-large green white-text">Contact Me</a>
+            <a href="#contact" class="btn pulse waves-effect btn-large green white-text show-contact-btn">Contact Me</a>
         </div>
         {% endfor %}
         {% else %}
