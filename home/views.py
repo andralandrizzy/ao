@@ -11,7 +11,7 @@ from . form import *
 
 def index(request):
     showcases = ShowcaseIntro.objects.all()[:1]
-    services = Service.objects.all()[:4]
+    services = Service.objects.order_by('-added_date')[:6]
     about_me = About.objects.all()[:1]
     skills = Skill.objects.all()
     portfolios = Portfolio.objects.order_by('-date_pub')

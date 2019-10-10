@@ -18,6 +18,7 @@ class Service(models.Model):
     icons = IconField()
     profession = models.CharField(max_length=200)
     text = models.TextField(blank=True)
+    added_date = models.DateTimeField(blank=True)
 
     def __str__(self):
         return self.profession

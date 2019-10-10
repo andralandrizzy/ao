@@ -16,9 +16,9 @@ admin.site.register(ShowcaseIntro, ShowcaseIntroAdmin)
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'profession', 'text')
-    list_display_links = ('id', 'profession', 'text')
-    list_filter = ('profession', 'text')
+    list_display = ('id', 'profession', 'text','added_date')
+    list_display_links = ('id', 'profession', 'text','added_date')
+    list_filter = ('profession', 'text','added_date')
     search_fields = ('profession', 'text')
     list_per_page = 25
 
