@@ -11,7 +11,7 @@ from . form import *
 
 def index(request):
     showcases = ShowcaseIntro.objects.all()[:1]
-    services = Service.objects.order_by('-added_date')[:6]
+    services = Service.objects.order_by('added_date')[:6]
     about_me = About.objects.all()[:1]
     skills = Skill.objects.all()
     portfolios = Portfolio.objects.order_by('-date_pub')
@@ -19,7 +19,7 @@ def index(request):
     page = request.GET.get('page')
     paged_portfolios = paginator.get_page(page)
     testimonials = Testimonial.objects.order_by(
-        '-date_create').filter(is_approved=True)[:3]
+        '-date_create').filter(is_approved=True)[:5]
     blogs = Blog.objects.order_by('-date_publish')[:3]
     footer = Footer.objects.all()[:1]
 

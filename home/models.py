@@ -68,7 +68,7 @@ class Contact(models.Model):
 
 
 class Testimonial(models.Model):
-    quote = models.CharField(max_length=200, blank=True)
+    quote = models.TextField(blank=True)
     full_name = models.CharField(max_length=100, blank=True)
     is_approved = models.BooleanField(default=False)
     date_create = models.DateField(default=datetime.now, blank=True)
